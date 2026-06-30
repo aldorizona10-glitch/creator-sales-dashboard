@@ -5,6 +5,17 @@ Rails.application.routes.draw do
   # Root = Inertia dashboard
   root "dashboard#index"
 
-  # Reveal health status on /up
+  # Auth
+  get  "login"  => "sessions#new",     as: :login
+  post "login"  => "sessions#create"
+  delete "logout" => "sessions#destroy", as: :logout
+
+  get  "register"   => "registrations#new",    as: :register
+  post "register"   => "registrations#create"
+
+  # Products (CRUD)
+  resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+
+  # PWA (optional)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 end
