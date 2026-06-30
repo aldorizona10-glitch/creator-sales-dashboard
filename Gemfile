@@ -11,7 +11,7 @@ gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/vite_rails] - Vite for React + TS via Inertia
 gem "vite_rails"
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
+# gem "cssbundling-rails"
 
 # Inertia.js adapter for Rails - lets us build SPA in React + TS inside Rails
 gem "inertia_rails"

@@ -21,11 +21,11 @@ class DashboardController < ApplicationController
         total_revenue_cents: sales.sum(:amount_cents),
         revenue_mtd_cents: mtd_revenue,
         growth_pct: growth,
-        sales_count_mtd: sales.where(created_at: month_start..).count,
+        sales_count_mtd: sales.where(created_at: month_start..).count
       },
       recent_sales: sales.limit(10).map { |s| serialize_sale(s) },
       top_products: top_products(sales),
-      daily_revenue: daily,
+      daily_revenue: daily
     }
   end
 
@@ -38,7 +38,7 @@ class DashboardController < ApplicationController
       buyer_email: sale.buyer_email,
       amount_cents: sale.amount_cents,
       currency: sale.currency,
-      created_at: sale.created_at.iso8601,
+      created_at: sale.created_at.iso8601
     }
   end
 
@@ -53,7 +53,7 @@ class DashboardController < ApplicationController
           id: row.product_id,
           name: Product.find(row.product_id).name,
           revenue_cents: row.revenue_cents.to_i,
-          sales_count: row.sales_count.to_i,
+          sales_count: row.sales_count.to_i
         }
       end
   end

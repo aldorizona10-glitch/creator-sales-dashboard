@@ -12,7 +12,7 @@ products_list = [
   { name: "1:1 Strategy Call (60 min)", price_cents: 14900 },
   { name: "Stock Photo Pack #3 — Studio", price_cents: 4900 },
   { name: "Notion OS for Creators", price_cents: 3900 },
-  { name: "Email Course — 7 day launch", price_cents: 9900 },
+  { name: "Email Course — 7 day launch", price_cents: 9900 }
 ]
 
 created_products = products_list.map do |attrs|
