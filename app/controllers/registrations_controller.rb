@@ -10,7 +10,9 @@ class RegistrationsController < ApplicationController
       session[:creator_id] = creator.id
       redirect_to root_path, notice: "Account created"
     else
-      redirect_to register_url, alert: creator.errors.full_messages.join(", ")
+      render inertia: "Auth/Register",
+             props: { errors: creator.errors.to_hash(true) },
+             status: :unprocessable_entity
     end
   end
 

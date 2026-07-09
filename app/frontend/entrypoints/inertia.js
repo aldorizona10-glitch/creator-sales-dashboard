@@ -1,4 +1,5 @@
-import { createInertiaApp } from '@inertiajs/inertia-react'
+import { createInertiaApp } from '@inertiajs/react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 
 // Plain JS entry — no TypeScript, no type assertions
@@ -16,7 +17,7 @@ createInertiaApp({
   },
   setup({ el, App, props }) {
     const root = createRoot(el)
-    root.render(h(React.createElement(App), props))
+    root.render(React.createElement(App, props))
   },
   progress: {
     color: '#FF90E8',

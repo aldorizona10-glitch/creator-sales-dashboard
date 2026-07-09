@@ -1,7 +1,5 @@
 require "test_helper"
 
-require "test_helper"
-
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   test "GET /login page renders" do
     get login_url
@@ -9,6 +7,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "POST /login with valid credentials creates session" do
+    Creator.create!(name: "Demo", email: "demo@creator.dev", password: "showcase-demo-2026")
+
     post login_url, params: { email: "demo@creator.dev", password: "showcase-demo-2026" }
     assert_redirected_to root_url
     assert_not_nil session[:creator_id]
@@ -21,11 +21,11 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "DELETE /logout clears session" do
-    # Login first
+    Creator.create!(name: "Demo", email: "demo@creator.dev", password: "showcase-demo-2026")
+
     post login_url, params: { email: "demo@creator.dev", password: "showcase-demo-2026" }
     assert_redirected_to root_url
 
-    # Logout
     delete logout_url
     assert_redirected_to login_url
     assert_nil session[:creator_id]

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post "register"   => "registrations#create"
 
   # Products (CRUD)
-  resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :products, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
 
   # PWA (optional)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
