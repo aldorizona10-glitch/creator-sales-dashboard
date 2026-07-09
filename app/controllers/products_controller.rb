@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, except: [ :index, :show ]
 
   def index
     @products = current_creator.products.order(created_at: :desc)

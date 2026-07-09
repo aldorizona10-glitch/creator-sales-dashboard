@@ -29,13 +29,18 @@ class CreatorTest < ActiveSupport::TestCase
 
   test "has many products" do
     creator = Creator.create!(name: "Test", email: "test-rel@dev.dev", password: "password123")
+    product = Product.create!(creator: creator, name: "Test Product", price_cents: 1000)
+
     assert_respond_to creator, :products
-    assert_kind_of Product, creator.products.first
+    assert_equal product, creator.products.first
   end
 
   test "has many sales" do
     creator = Creator.create!(name: "Test", email: "test-rel2@dev.dev", password: "password123")
+    product = Product.create!(creator: creator, name: "Test Product", price_cents: 1000)
+    sale = Sale.create!(creator: creator, product: product, amount_cents: 100, buyer_email: "test@test.dev")
+
     assert_respond_to creator, :sales
-    assert_kind_of Sale, creator.sales.first
+    assert_equal sale, creator.sales.first
   end
 end

@@ -62,9 +62,17 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
       - name: Set up database
         run: bin/rails db:create db:schema:load
 
       - name: Run tests
         run: bin/rails test
-
